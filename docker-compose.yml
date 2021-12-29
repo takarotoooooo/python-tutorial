@@ -1,0 +1,17 @@
+version: '2.3'
+services:
+  jupyter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: python-tutorials
+    container_name: python-tutorials
+    runtime: nvidia
+    environment:
+      NVIDIA_VISIBLE_DEVICES: all
+      NVIDIA_DRIVER_CAPABILITIES: all
+    shm_size: '16gb'
+    ports:
+      - "0.0.0.0:8000:8000"
+    volumes:
+      - ./src:/workspace
